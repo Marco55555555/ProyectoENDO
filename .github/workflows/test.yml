@@ -1,4 +1,4 @@
-name: Run Restaurant Sales Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
