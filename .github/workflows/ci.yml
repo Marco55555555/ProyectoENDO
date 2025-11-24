@@ -1,11 +1,11 @@
-name: CI/CD Pipeline
+name: CI - Pipeline Tests
 
 on:
   push:
   pull_request:
 
 jobs:
-  build:
+  ci-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +22,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run pipeline
+    - name: Run orchestrator to validate pipeline integration
+      env:
+        PYTHONPATH: .
       run: |
         python src/orchestrator.py
 
-    - name: Run analysis
+    - name: Run analysis module to verify reporting works
+      env:
+        PYTHONPATH: .
       run: |
         python src/analysis.py
